@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "goph420_lab01"
+version = "0.0.1"
+authors = [
+    { name="Viktor Pejic", email="viktor.pejic@ucalgary.ca" },
+]
+description="An example Python package"
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "numpy",
+    "matplotlib",
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+    "License :: OSI Approved :: GNU General Public License v3",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/Viktor-Pejic/goph420_w2025_lab01_stVP"
