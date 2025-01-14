@@ -1,1 +1,1 @@
-# goph420_w2025_lab01_stVP
+# GOPH 420 W2025  - Lab 1 
