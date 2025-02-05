@@ -36,4 +36,6 @@ def test_trap():
     print(f"Quadratic function actual using odd data points value: {int4_actual}")
     print(f"relative error using even data points: {(i3-int3_actual)/i3:.4f}")
     print(f"relative error using odd data points: {(i3-int4_actual)/i3:.4f}")
-test_trap()
+
+if __name__ == '__main__':
+    test_trap()
