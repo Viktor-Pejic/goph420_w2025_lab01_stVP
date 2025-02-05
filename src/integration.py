@@ -1,46 +1,40 @@
 import numpy as np
 
+def integrate_newton(x, f, alg='trap'):
 
+    N = len(x) - 1 #number of intervals
+    dx = (x[-1] - x[0]) / N
 
-def trapezoid(x, f, T_index, N):
+    if alg.strip().lower() == 'trap':
 
-    time_T = x[:T_index + 1]
-    vel_T = f[:T_index + 1]
+        sum = np.sum(f[1:-1])
 
-    dx = (time_T[-1] - time_T[0]) / N
-    vel_squared = vel_T ** 2
+        integral = (dx/2) * (f[0] + 2*sum + f[-1])
 
-    integral = 0.5 * dx * (vel_squared[0] + np.sum(vel_squared[1:N-1]) + vel_squared[-1])
-
-    return integral
-
-def simpson(x, f, T_index, N):
-
-
-    time_T = x[:T_index + 1]
-    vel_T = f[:T_index + 1]
-
-    dx = (time_T[-1] - time_T[0]) / N
-    vel_squared = vel_T ** 2
-
-    integral = (1/3) * dx * (vel_squared[0] + 4*(np.sum(vel_squared[1:N - 1:2])) + 2*(np.sum(vel_squared[2:N - 1:2])) + vel_squared[-1])
-    return integral
-
-
-def integrate_newton(x, f, alg):
-
-    max_velocity = np.max(np.abs(f))
-    threshold = 0.005 * max_velocity
-    N = len(np.where(np.abs(f) > threshold)[0])
-    T_index = np.where(np.abs(f) > threshold)[0][-1]
-
-    if alg == 'trap':
-       integral = trapezoid(x, f, T_index, N)
-       return integral
-
-    if alg == 'simp':
-        integral = simpson(x, f, T_index, N)
         return integral
+
+    if alg.strip().lower() == 'simp':
+        #If number of points is odd, perform 1/3 rule
+        if (N + 1) % 2 == 1:
+            integral = (1 / 3) * dx * (f[0] +
+                                        4 * (np.sum(f[1:-1:2])) +
+                                        2 * (np.sum(f[2:-2:2])) +
+                                        f[-1])
+            return integral
+
+        else:
+            #If number of points are even, perform 3/8 rule once with 4 points then
+            #perform 1/3 rule for remaining points and sum
+            integral = ((1 / 8) * ((f[3] - f[0]) / 3) *
+                                   (f[0] + (3 * f[1]) + (3 * f[2]) + f[3]))
+
+            integral += (1 / 3) * dx * (f[3] +
+                                       4 * (np.sum(f[4:-1:2])) +
+                                       2 * (np.sum(f[5:-2:2])) +
+                                       f[-1])
+
+            return integral
+
 
 
 
