@@ -3,11 +3,11 @@ import numpy as np
 
 
 def test_trap():
-    x = np.linspace(-2, 6)
-    x2 = np.linspace(-2,6,len(x)+1)
-    f1 = 2*(x)
-    f2 = np.full(len(x), 5)
-    f3 = 3 * x ** 2
+    x = np.linspace(-2, 6) #even data points
+    x2 = np.linspace(-2,6,len(x)+1) #odd data points
+    f1 = 2*(x) #linear
+    f2 = np.full(len(x), 5) #constant
+    f3 = 3 * x ** 2 #quadratic
 
     #expected value of integral
     i1 = (6**2) - ((-2)**2)
