@@ -4,7 +4,7 @@ import numpy as np
 
 def test_trap():
     x = np.linspace(-2, 6) #even data points
-    x2 = np.linspace(-2,6,len(x)+1) #odd data points
+    x2 = np.linspace(-2,6, len(x) + 1) #odd data points
     f1 = 2*(x) #linear
     f2 = np.full(len(x), 5) #constant
     f3 = 3 * x ** 2 #quadratic
@@ -31,8 +31,8 @@ def test_trap():
     print()
     print("--------Testing simpson integration-------")
     print(f"Quadratic function expected value: {i3}")
-    print(f"Quadratic function actual using odd data points value: {int3_actual}")
+    print(f"Quadratic function actual using even data points value: {int3_actual}")
     print(f"Quadratic function actual using odd data points value: {int4_actual}")
-    print(f"relative error using odd data points: {(i3-int3_actual)/i3:.4f}")
-    print(f"relative error using even data points: {(i3-int4_actual)/i3:.4f}")
+    print(f"relative error using even data points: {(i3-int3_actual)/i3:.4f}")
+    print(f"relative error using odd data points: {(i3-int4_actual)/i3:.4f}")
 test_trap()
