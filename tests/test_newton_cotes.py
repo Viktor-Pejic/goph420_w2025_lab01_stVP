@@ -8,6 +8,7 @@ def test_trap():
     f1 = 2*(x) #linear
     f2 = np.full(len(x), 5) #constant
     f3 = 3 * x ** 2 #quadratic
+    f4 = 3 * x2 ** 2
 
     #expected value of integral
     i1 = (6**2) - ((-2)**2)
@@ -17,7 +18,7 @@ def test_trap():
     int1_actual = integrate_newton(x, f1, alg = 'trap')
     int2_actual = integrate_newton(x, f2, alg = 'trap')
     int3_actual = integrate_newton(x, f3, alg = 'simp')
-    int4_actual = integrate_newton(x2, f3, alg = 'simp')
+    int4_actual = integrate_newton(x2, f4, alg = 'simp')
 
 
     print("-------Testing trapezoid integration-------")
