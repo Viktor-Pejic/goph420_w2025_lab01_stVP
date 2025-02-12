@@ -1,4 +1,4 @@
-from src.integration import integrate_newton
+from goph420_lab01 import integrate_newton
 import numpy as np
 
 
