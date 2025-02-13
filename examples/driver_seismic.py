@@ -75,7 +75,7 @@ def main ():
     plt.ylabel("dt")
     plt.legend()
     plt.grid()
-    plt.savefig("figures/Error_plot.png")
+    plt.savefig("figures/Trap_Simp_Convergence_Plot.png")
 
 if __name__ == "__main__":
     main()
