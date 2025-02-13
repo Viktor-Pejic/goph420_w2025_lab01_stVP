@@ -34,6 +34,37 @@ def integrate_newton(x, f, alg='trap'):
 
             return integral
 
+def integrateGauss(f, lims, npts = 3):
+
+    if not callable(f):
+        raise TypeError('f is not callable')
+
+    if len(lims) != 2:
+        raise ValueError('lims must only contain 2 elements')
+
+    try:
+        float(lims[0])
+        float(lims[1])
+    except ValueError:
+        raise ValueError('lims elements must be convertible to a float')
+
+    if npts not in [1,2,3,4,5]:
+        raise ValueError('npts must be an integer between 1 and 5')
+
+    #Generate the nodes and weights for the corresponding n
+    x_i, c_i = np.polynomial.legendre.leggauss(npts)
+
+    #Assign integration limits
+    a, b = lims
+
+    #Change of variable from [a,b] to [-1,1]
+    x = 0.5*(b + a) + (0.5*(b - a) * x_i)
+    c = 0.5*(b - a) * c_i
+
+    integral = np.sum(c * f(x))
+
+    return integral
+
 
 
 
