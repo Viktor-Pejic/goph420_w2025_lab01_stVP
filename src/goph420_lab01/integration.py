@@ -1,6 +1,11 @@
 import numpy as np
 
 def integrate_newton(x, f, alg='trap'):
+    x = np.array(x)
+    f = np.array(f)
+
+    if x.shape != f.shape:
+        raise ValueError('x and f must have the same shape')
 
     N = len(x) - 1 #number of intervals
     dx = (x[-1] - x[0]) / N
@@ -33,6 +38,9 @@ def integrate_newton(x, f, alg='trap'):
                                        f[-1])
 
             return integral
+    else:
+        raise ValueError("Algorithm type must be trap or simp")
+
 
 def integrateGauss(f, lims, npts = 3):
 
