@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
-from goph420_lab01.integration import integrateGauss
+from goph420_lab01.integration import integrate_gauss
 
 
 def prob_magnitude():
@@ -22,7 +22,7 @@ def prob_magnitude():
     def f(z):
         return (1 / np.sqrt(2 * np.pi)) * np.exp(-0.5 * z ** 2)
 
-    probability = integrateGauss(f, lims, npts=3)
+    probability = integrate_gauss(f, lims, npts=3)
 
     print(f"Probability that an earthquake with magnitude > 4 occurs: {probability}")
 
@@ -52,7 +52,7 @@ def prob_trueValue():
     convergence = []
     for stDeviation in stdevs:
         lims = [(a - mean) / stDeviation, (b - mean) / stDeviation]
-        probability = integrateGauss(f, lims, npts=3)
+        probability = integrate_gauss(f, lims, npts=3)
         convergence.append(probability)
     return sample_sizes, convergence
 

@@ -42,7 +42,7 @@ def integrate_newton(x, f, alg='trap'):
         raise ValueError("Algorithm type must be trap or simp")
 
 
-def integrateGauss(f, lims, npts = 3):
+def integrate_gauss(f, lims, npts = 3):
 
     if not callable(f):
         raise TypeError('f is not callable')

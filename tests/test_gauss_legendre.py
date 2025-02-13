@@ -1,6 +1,6 @@
 import scipy.integrate
 import numpy as np
-from goph420_lab01.integration import integrateGauss
+from goph420_lab01.integration import integrate_gauss
 
 def main():
     def f(x):
@@ -9,7 +9,7 @@ def main():
     lims = [0, np.pi]
     npts = 5
 
-    result = integrateGauss(f, lims, npts)
+    result = integrate_gauss(f, lims, npts)
     expectedResult, _ = scipy.integrate.fixed_quad(f, lims[0], lims[1], n=npts)
 
     print("------------Testing Gauss Quadrature Integration----------")

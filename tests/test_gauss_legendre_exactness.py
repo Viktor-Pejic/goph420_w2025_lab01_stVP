@@ -1,5 +1,5 @@
 import unittest
-from goph420_lab01.integration import integrateGauss
+from goph420_lab01.integration import integrate_gauss
 
 
 
@@ -29,7 +29,7 @@ class TestGaussLegendreIntegration(unittest.TestCase):
         lims = [-1, 1]  # Integration limits
 
         for f, npts, degree in poly_funcs:
-            result = integrateGauss(f, lims, npts)
+            result = integrate_gauss(f, lims, npts)
             expected = (lims[1]**(degree + 1) - lims[0]**(degree + 1)) / (degree + 1)  # Exact integral
             self.assertAlmostEqual(result, expected, places=10,
                 msg=f"Failed for polynomial of degree {npts}")
