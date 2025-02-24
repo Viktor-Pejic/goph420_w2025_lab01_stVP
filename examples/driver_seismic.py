@@ -71,7 +71,7 @@ def main ():
     plt.legend()
     plt.grid()
     plt.savefig("figures/Trap_Simp_Convergence_Plot.png")
-    print(f"Value T used in the integration: {vel[T_index]}")
+    print(f"Value T used in the integration: {vel[T_index]}mm/s")
 
 if __name__ == "__main__":
     main()
