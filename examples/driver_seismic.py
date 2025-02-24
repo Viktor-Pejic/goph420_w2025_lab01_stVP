@@ -6,7 +6,8 @@ def main ():
     s_wave = np.loadtxt("data/s_wave_data.txt", dtype='float')
 
     time = s_wave[:, 0]
-    velocity = s_wave[:, 1]
+    vel = s_wave[:, 1]
+    velocity = vel ** 2
 
     #Create end point for the data
     max_velocity = np.max(np.abs(velocity))
@@ -62,12 +63,6 @@ def main ():
     rel_err_simp.append(err_3_simp)
     dt.append(x_2[1] - x_2[0])
 
-    err_4_trap = abs((int_trap_1 - int_trap_2)/int_trap_1)
-    err_4_simp = abs((int_simp_1 - int_simp_2)/int_simp_1)
-    rel_err_trap.append(err_4_trap)
-    rel_err_simp.append(err_4_simp)
-    dt.append(x[1] - x[0])
-
     plt.loglog(dt, rel_err_trap, label='trap')
     plt.loglog(dt, rel_err_simp, label='simp')
     plt.title("Error vs. Sample Interval Length")
@@ -76,6 +71,7 @@ def main ():
     plt.legend()
     plt.grid()
     plt.savefig("figures/Trap_Simp_Convergence_Plot.png")
+    print(f"Value T used in the integration: {velocity[T_index]}")
 
 if __name__ == "__main__":
     main()
